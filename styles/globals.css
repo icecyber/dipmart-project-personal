@@ -2,6 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
+.main-layout {
+  @apply flex min-h-screen flex-col  justify-between;
+}
+.nav {
+  @apply flex justify-between h-12 shadow-md items-center px-4;
+}
+.card {
+  @apply mb-5 block rounded-lg border-gray-200 shadow-md;
+}
+.primary-button {
+  @apply rounded bg-amber-300 py-2 px-4 shadow outline-none hover:bg-amber-400 active:bg-amber-600;
+}
+
 html,
 body {
   padding: 0;
