@@ -45,37 +45,32 @@ const Home: NextPage = () => {
 
   return (
     <Layout>
-      {/* <Marquee className='w-full h-[200px] md:full md:h-[360px] ' gradient={false} >
-        {slide.map((slides)=>(
-          <div key={slides.id}>
-            <Image className='w-full h-full' src={slides.image} alt={slides.title} layout='fill' />
-          </div>
-        ))
-        }
-      </Marquee> */}
       <Banner banner={slide} />
       <div>
+        <div className="w-full h-[200px] md:full md:h-[360px] grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-5">
+          {brandname?.slice(0, 7).map((s) => (
+            <div key={s.id} className="relative  w-[74px] h-[67px] ">
+              <Link href="/">
+                <a>
+                  <Image
+                    className="object-cover"
+                    src={s.logo}
+                    alt={s.name}
+                    layout="fill"
+                  />
+                </a>
+              </Link>
+            </div>
+          ))}
+        </div>
         <div className="d-flex justify-between">
           <h2 className="text-lg font-bold">Shop By Brand</h2>
           <Link href="/">
             <a href="">See all</a>
           </Link>
         </div>
-
-        <div className="w-full h-[200px] md:full md:h-[360px] grid grid-cols-3 gap-4 md:grid-cols-3 lg:grid-cols-5">
-          {brandname?.slice(0, 3).map((s) => (
-            <div key={s.id} className="relative w-10 h-10">
-              <Image
-                className="object-cover"
-                src={s.logo}
-                alt={s.name}
-                layout="fill"
-              />
-            </div>
-          ))}
-        </div>
       </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5 ">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
         {product.map((product: any) => {
           return <ProductItem product={product} key={product.id} />;
         })}

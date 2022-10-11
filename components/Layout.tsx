@@ -1,6 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import CartBTN from './button/CartBTN';
+import CategoryBTN from './button/CategoryBTN';
 import HomeBTN from './button/HomeBTN';
+import NortificationBTN from './button/NortificationBTN';
+import ProfileBTN from './button/ProfileBTN';
+import SearchBTN from './button/SearchBTN';
+import WishlistBTN from './button/WishlistBTN';
 
 interface Props {
   children: any;
@@ -18,24 +24,32 @@ function Layout({ title, children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="main-layout">
-        <header>
+        <header className="sticky top-0 w-full z-20 bg-white">
           <nav className="nav">
             <Link href={'/'}>
               <a className="text-lg font-bold">DiPMart</a>
             </Link>
             <div>
               <Link href={'/cart'}>
-                <a className="px-4">Cart</a>
+                <a className="px-4">
+                  <SearchBTN />
+                </a>
               </Link>
               <Link href={'/login'}>
-                <a className="px-4">Login</a>
+                <a className="px-4">
+                  <NortificationBTN />
+                </a>
               </Link>
             </div>
           </nav>
         </header>
         <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="flex justify-center h-auto shadow-inner items-center sticky bottom-0 bg-white py-3">
+        <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white py-3 px-5 text-center">
           <HomeBTN />
+          <CategoryBTN />
+          <CartBTN />
+          <WishlistBTN />
+          <ProfileBTN />
         </footer>
       </div>
     </>

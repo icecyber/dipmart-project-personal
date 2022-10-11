@@ -12,7 +12,7 @@ const Banner = ({ banner }: any) => {
       <Swiper
         pagination={true}
         modules={[Pagination]}
-        className="mySwiper w-full h-[360px] rounded-md"
+        className="mySwiper w-full h-[170px] rounded-md "
       >
         {banner?.map((data: any) => (
           <SwiperSlide key={data.id}>
