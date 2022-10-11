@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import HomeBTN from './button/HomeBTN';
 
 interface Props {
   children: any;
@@ -32,10 +33,9 @@ function Layout({ title, children }: Props) {
             </div>
           </nav>
         </header>
-        <main className="container m-auto mt-4 px-4">
-          {children}</main>
-        <footer className="flex justify-center h-10 shadow-inner items-center">
-          Copyright By DiPMart 2022
+        <main className="container m-auto mt-4 px-4">{children}</main>
+        <footer className="flex justify-center h-auto shadow-inner items-center sticky bottom-0 bg-white py-3">
+          <HomeBTN />
         </footer>
       </div>
     </>
