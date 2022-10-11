@@ -1,7 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
 
 import type { NextPage } from 'next';
-import Image from 'next/image';
 import Link from 'next/link';
 // import Marquee from 'react-fast-marquee';
 
@@ -47,27 +47,27 @@ const Home: NextPage = () => {
     <Layout>
       <Banner banner={slide} />
       <div>
-        <div className="w-full h-[200px] md:full md:h-[360px] grid grid-cols-4 gap-4 md:grid-cols-3 lg:grid-cols-5">
-          {brandname?.slice(0, 7).map((s) => (
-            <div key={s.id} className="relative  w-[74px] h-[67px] ">
-              <Link href="/">
+        <div className="w-full h-auto md:full md:h-auto grid grid-cols-4 gap-4 md:grid-cols-3 my-[20px]">
+          {brandname?.slice(0, 8).map((s) => (
+            <div
+              key={s.id}
+              className="relative  flex flex-col bg-white rounded-lg w-[74px] h-[67px] mx-auto"
+            >
+              <Link href={'/'}>
                 <a>
-                  <Image
-                    className="object-cover"
+                  <img
+                    className="w-[37px] h-[37px] mx-auto object-contain"
                     src={s.logo}
                     alt={s.name}
-                    layout="fill"
                   />
                 </a>
               </Link>
+              <span className="text-center">{s.name}</span>
             </div>
           ))}
         </div>
-        <div className="d-flex justify-between">
-          <h2 className="text-lg font-bold">Shop By Brand</h2>
-          <Link href="/">
-            <a href="">See all</a>
-          </Link>
+        <div className="d-flex justify-between mb-[20px]">
+          <h2 className="text-lg font-bold">Popular</h2>
         </div>
       </div>
       <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
