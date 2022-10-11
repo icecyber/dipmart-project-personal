@@ -1,17 +1,24 @@
-/* eslint-disable @next/next/no-img-element */
-import Link from 'next/link';
 import React from 'react';
+
+/* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
+import Link from 'next/link';
+
 import { ProductItemType } from './type';
 
 const ProductItem = ({ product }: ProductItemType) => {
+  console.log(product);
+  
   return (
     <div className="card">
       <Link href={`/product/${product.id}`} key={product.id}>
         <a>
-          <img
+          <Image
             className="rounded shadow mx-auto max-w-sm md:max-w-[10rem] "
             src={product.primary_image}
             alt={product.name}
+            width='500px'
+            height='500px'
           />
         </a>
       </Link>
