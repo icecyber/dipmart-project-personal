@@ -44,19 +44,19 @@ const Home: NextPage = () => {
   }, []);
 
   return (
-    <Layout>
+    <Layout title="Homepage">
       <Banner banner={slide} />
       <div>
-        <div className="w-full h-auto md:full md:h-auto grid grid-cols-4 gap-4 md:grid-cols-3 my-[20px]">
+        <div className="w-full h-auto md:full md:h-auto grid grid-cols-4 gap-4 md:grid-cols-5 my-[20px]">
           {brandname?.slice(0, 8).map((s) => (
             <div
               key={s.id}
-              className="relative  flex flex-col bg-white rounded-lg w-[74px] h-[67px] mx-auto"
+              className="relative  flex flex-col bg-white rounded-lg w-full py-[10px] mx-auto items-center"
             >
               <Link href={'/'}>
                 <a>
                   <img
-                    className="w-[37px] h-[37px] mx-auto object-contain"
+                    className="w-[37px] h-[37px] md:w-[37px] md:h-[37px] mx-auto object-contain"
                     src={s.logo}
                     alt={s.name}
                   />

@@ -6,11 +6,11 @@ import Search from './icon/Search';
 
 const TopNav = () => {
   return (
-    <header className="sticky top-0 w-full z-20 bg-white">
-      <nav className="nav">
+    <header className="sticky top-0 w-full z-20  bg-white">
+      <nav className="nav md:h-[90px]">
         <Link href="/">
           <img
-            className="w-20 h-auto"
+            className="w-20 md:w-[130px] h-auto"
             src="https://www.dipmarts.com/wp-content/themes/dipmarts/assets/images/DiPMart-Horizontal-Logo.png"
             alt="logo"
           />

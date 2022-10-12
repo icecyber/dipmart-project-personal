@@ -12,16 +12,11 @@ const Banner = ({ banner }: any) => {
       <Swiper
         pagination={true}
         modules={[Pagination]}
-        className="mySwiper w-full h-[170px] rounded-md "
+        className="mySwiper w-full h-[170px] md:h-[330px] rounded-md "
       >
         {banner?.map((data: any) => (
           <SwiperSlide key={data.id}>
-            <Image
-              src={data.image}
-              alt={data.name}
-              layout="fill"
-              className="w-full h-32"
-            />
+            <Image src={data.image} alt={data.name} layout="fill" />
           </SwiperSlide>
         ))}
       </Swiper>

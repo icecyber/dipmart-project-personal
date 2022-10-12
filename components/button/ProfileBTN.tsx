@@ -3,7 +3,7 @@ import React from 'react';
 
 const ProfileBTN = () => {
   return (
-    <Link href="/">
+    <Link href="/profile">
       <a
         type="button"
         className="w-[40px] m-auto relative items-center py-2 text-sm font-medium text-center text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 active:border-2 active:border-t-4 active"

@@ -6,10 +6,11 @@ import HomeBTN from './button/HomeBTN';
 import ProfileBTN from './button/ProfileBTN';
 import WishlistBTN from './button/WishlistBTN';
 import TopNav from './TopNav';
+import TovNavCategory from './TovNavCategory';
 
 interface Props {
   children: any;
-  title?: string;
+  title: string;
 }
 
 function Layout({ title, children }: Props) {
@@ -23,7 +24,7 @@ function Layout({ title, children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="main-layout">
-        <TopNav />
+        {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
         <main className="container m-auto mt-4 px-4">{children}</main>
         <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white py-3 px-5 text-center z-50">
           <HomeBTN />
