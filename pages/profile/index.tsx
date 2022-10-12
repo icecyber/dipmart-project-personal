@@ -57,10 +57,10 @@ const ProfilePage = () => {
         </button>
         {/* Show Modal */}
         {showModal ? (
-          <div className="w-full bg-white rounded-lg h-screen absolute m-auto left-0 right-0 z-[150]">
+          <div className="w-full bg-white rounded-lg h-[350px] absolute m-auto left-0 right-0 z-[150] bottom-0">
             <div className="grid grid-cols-2 shadow bg-white rounded-t-lg relative ">
-              <button className="auth-btn">Sign Up</button>
-              <button className="auth-btn">Login</button>
+              <button className="auth-btn">Sign Up </button>
+              <button className="auth-btn">Login </button>
             </div>
             <div className="px-[20px]">
               <div className="pt-[20px] bg-white ">

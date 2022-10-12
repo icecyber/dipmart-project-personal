@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Pagination } from 'swiper';
+import { Autoplay, Pagination } from 'swiper';
 import Image from 'next/image';
 
 const Banner = ({ banner }: any) => {
@@ -11,7 +11,11 @@ const Banner = ({ banner }: any) => {
     <>
       <Swiper
         pagination={true}
-        modules={[Pagination]}
+        modules={[Pagination, Autoplay]}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         className="mySwiper w-full h-[170px] md:h-[330px] rounded-md "
       >
         {banner?.map((data: any) => (

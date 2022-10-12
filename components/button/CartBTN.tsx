@@ -24,7 +24,7 @@ const CartBTN = () => {
         </svg>
 
         <span className="sr-only">Notifications</span>
-        <div className="badge-overlay">2</div>
+        <div className="badge-overlay">{2}</div>
       </a>
     </Link>
   );
