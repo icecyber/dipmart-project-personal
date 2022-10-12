@@ -10,7 +10,7 @@ import TovNavCategory from './TovNavCategory';
 
 interface Props {
   children: any;
-  title: string;
+  title: any;
 }
 
 function Layout({ title, children }: Props) {

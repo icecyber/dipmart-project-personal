@@ -89,7 +89,7 @@ const CartPage = () => {
             </div>
           </div>
         </div>
-        <div className="border-y-2 border-white py-4 px-3 bg-white rounded-xl ">
+        <div className="border-y-2 border-white py-4 px-3 bg-white rounded-xl shadow-lg">
           <span className="text-[16px] font-bold">Review Order</span>
           <div>
             <div className="flex py-5 justify-around">

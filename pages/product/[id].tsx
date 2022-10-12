@@ -1,7 +1,4 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect, useState } from 'react';
 
 import Image from 'next/image';
 import Link from 'next/link';
@@ -20,20 +17,19 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Data>();
   useEffect(() => {
     const fetchData = async () => {
-      const res = await customAxios.get(
-        'api/method/dipmarts_app.api.homepagepg'
+      const res = await customAxios.post(
+        '/api/method/dipmarts_app.api.productdetail'
       );
-      setProduct(await res.data.message.all_products);
+      setProduct(await res.data.message);
     };
     fetchData();
   }, []);
   console.log(product);
-  
+
   const router = useRouter();
   const product_id = router.query.data;
 
-
-  if(product_id === product?.id){
+  if (product_id === product?.id) {
     return (
       <Layout title={product?.name}>
         <div className="py-2">
@@ -42,7 +38,7 @@ const ProductDetail = () => {
         <div className="grid md:grid-cols-4 md:gap-3">
           <div className="md:col-span-2">
             <Image
-              src={product?.primary_image ?? ""}
+              src={product?.primary_image ?? ''}
               alt={product?.name}
               width={640}
               height={640}
@@ -51,7 +47,7 @@ const ProductDetail = () => {
           </div>
         </div>
       </Layout>
-    );   
+    );
   }
 };
 
