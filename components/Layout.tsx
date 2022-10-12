@@ -1,9 +1,16 @@
+/* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
-import Link from 'next/link';
+import CartBTN from './button/CartBTN';
+import CategoryBTN from './button/CategoryBTN';
+import HomeBTN from './button/HomeBTN';
+import ProfileBTN from './button/ProfileBTN';
+import WishlistBTN from './button/WishlistBTN';
+import TopNav from './TopNav';
+import TovNavCategory from './TovNavCategory';
 
 interface Props {
   children: any;
-  title?: string;
+  title: any;
 }
 
 function Layout({ title, children }: Props) {
@@ -17,25 +24,14 @@ function Layout({ title, children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="main-layout">
-        <header>
-          <nav className="nav">
-            <Link href={'/'}>
-              <a className="text-lg font-bold">DiPMart</a>
-            </Link>
-            <div>
-              <Link href={'/cart'}>
-                <a className="px-4">Cart</a>
-              </Link>
-              <Link href={'/login'}>
-                <a className="px-4">Login</a>
-              </Link>
-            </div>
-          </nav>
-        </header>
-        <main className="container m-auto mt-4 px-4">
-          {children}</main>
-        <footer className="flex justify-center h-10 shadow-inner items-center">
-          Copyright By DiPMart 2022
+        {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
+        <main className="container m-auto mt-4 px-4">{children}</main>
+        <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white py-3 px-5 text-center z-50">
+          <HomeBTN />
+          <CategoryBTN />
+          <CartBTN />
+          <WishlistBTN />
+          <ProfileBTN />
         </footer>
       </div>
     </>
