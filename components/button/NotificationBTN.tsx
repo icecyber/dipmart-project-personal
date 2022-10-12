@@ -1,7 +1,8 @@
-import Link from 'next/link';
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const NortificationBTN = () => {
+import Link from 'next/link';
+
+const NotificationBTN = () => {
   return (
     <Link href="/">
       <a
@@ -29,4 +30,4 @@ const NortificationBTN = () => {
   );
 };
 
-export default NortificationBTN;
+export default forwardRef(NotificationBTN);

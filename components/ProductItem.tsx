@@ -7,7 +7,7 @@ import Link from 'next/link';
 import { ProductItemType } from './type';
 
 const ProductItem = ({ product }: ProductItemType) => {
-  console.log(product);
+
 
   return (
     <div className="card relative">
