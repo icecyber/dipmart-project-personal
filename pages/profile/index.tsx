@@ -6,6 +6,7 @@ import OrderIcon from '../../components/icon/OrderIcon';
 import ProfileIcon from '../../components/icon/ProfileIcon';
 import Layout from '../../components/Layout';
 import SettingComponents from '../../components/SettingComponents';
+import { Input } from '@material-tailwind/react';
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -63,33 +64,34 @@ const ProfilePage = () => {
                 <button className="auth-btn">Sign Up </button>
                 <button className="auth-btn">Login </button>
               </div>
-              <div className="px-[20px]">
-                <div className="pt-[20px] bg-white ">
-                  <input
-                    className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
-                    type="number"
-                    placeholder="Phone Number *"
-                    required
-                  />
-                </div>
-                <div className=" bg-white ">
-                  <input
-                    className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
-                    type="password"
-                    placeholder="Password *"
-                    required
-                  />
-                </div>
-                <u className="text-sm text-blue-600">Forgot password?</u>
-                <button
-                  className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[20px]"
-                  onClick={() => setShowModal(!true)}
-                >
-                  <span className="font-bold text-[14px] text-white">
+              <form>
+                <div className="px-[20px]">
+                  <div className="pt-[20px] bg-white mb-[10px]">
+                    <Input
+                      className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
+                      type="number"
+                      required
+                      label="Phone Number"
+                    />
+                  </div>
+                  <div className=" bg-white mb-[10px]">
+                    <Input
+                      className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
+                      type="password"
+                      required
+                      label="Password"
+                    />
+                  </div>
+                  <u className="text-sm text-blue-600">Forgot password?</u>
+                  <button
+                    className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
+                    onClick={() => setShowModal(!true)}
+                    type="submit"
+                  >
                     Login
-                  </span>
-                </button>
-              </div>
+                  </button>
+                </div>
+              </form>
             </div>
           ) : null}
 

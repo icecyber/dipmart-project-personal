@@ -7,8 +7,6 @@ import Link from 'next/link';
 import { ProductItemType } from './type';
 
 const ProductItem = ({ product }: ProductItemType) => {
-  console.log(product);
-
   return (
     <div className="card relative">
       <div className="-left-1 absolute z-10 w-[60px] h-[18px] bg-red-600 rounded-r-sm text-white text-[9px] flex justify-center items-center mt-[10px] ">

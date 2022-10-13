@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
-import Link from 'next/link';
+
 import { useRouter } from 'next/router';
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
@@ -74,7 +74,7 @@ const ProductDetail = () => {
     <Fragment>
       <Layout title={product?.name}>
         <div className="w-full relative px-4">
-          <Link href="/">
+          <button onClick={() => router.back()}>
             <a className="absolute bg-gray-300 w-8 h-8 flex justify-center items-center rounded-lg shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -91,7 +91,7 @@ const ProductDetail = () => {
                 />
               </svg>
             </a>
-          </Link>
+          </button>
           <img
             className="w-full"
             src={product?.primary_image}
