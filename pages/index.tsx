@@ -33,7 +33,6 @@ const Home: NextPage = () => {
   const [slide, setSlide] = useState<Array<Slide>>([]);
   const [brandname, setBrandname] = useState<Array<Brand>>();
   const [secondslide, setSecondslide] = useState<Array<Brand>>([])
-
   const [allproduct, setAllproduct] = useState<Array<Data>>([])
   
 
@@ -120,3 +119,5 @@ const Home: NextPage = () => {
 };
 
 export default Home;
+
+
