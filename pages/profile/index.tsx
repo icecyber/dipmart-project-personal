@@ -41,64 +41,68 @@ const ProfilePage = () => {
             </div>
           </div>
         </div>
-        {/* Setting Component */}
-        <div className="grid gap-4">
-          <SettingComponents text="Nortification Settings" />
-          <SettingComponents text="Privacy Policy" />
-          <SettingComponents text="Legal Information" />
-          <SettingComponents text="Version" />
-        </div>
-        {/* Login Button */}
-        <button
-          className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[30px]"
-          onClick={() => setShowModal(true)}
-        >
-          <span className="font-bold text-[14px] text-white">Login</span>
-        </button>
-        {/* Show Modal */}
-        {showModal ? (
-          <div className="w-full bg-white rounded-lg h-[350px] absolute m-auto left-0 right-0 z-[150] bottom-0 shadow-lg">
-            <div className="grid grid-cols-2 shadow bg-white rounded-t-lg relative ">
-              <button className="auth-btn">Sign Up </button>
-              <button className="auth-btn">Login </button>
-            </div>
-            <div className="px-[20px]">
-              <div className="pt-[20px] bg-white ">
-                <input
-                  className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
-                  type="number"
-                  placeholder="Phone Number *"
-                  required
-                />
-              </div>
-              <div className=" bg-white ">
-                <input
-                  className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
-                  type="password"
-                  placeholder="Password *"
-                  required
-                />
-              </div>
-              <u className="text-sm text-blue-600">Forgot password?</u>
-              <button
-                className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[20px]"
-                onClick={() => setShowModal(!true)}
-              >
-                <span className="font-bold text-[14px] text-white">Login</span>
-              </button>
-            </div>
+        <div className="px-4">
+          {/* Setting Component */}
+          <div className="grid gap-4">
+            <SettingComponents text="Nortification Settings" />
+            <SettingComponents text="Privacy Policy" />
+            <SettingComponents text="Legal Information" />
+            <SettingComponents text="Version" />
           </div>
-        ) : null}
+          {/* Login Button */}
+          <button
+            className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[30px]"
+            onClick={() => setShowModal(true)}
+          >
+            <span className="font-bold text-[14px] text-white">Login</span>
+          </button>
+          {/* Show Modal */}
+          {showModal ? (
+            <div className="w-full bg-white rounded-lg h-[350px] absolute m-auto left-0 right-0 z-[150] bottom-0 shadow-lg">
+              <div className="grid grid-cols-2 shadow bg-white rounded-t-lg relative ">
+                <button className="auth-btn">Sign Up </button>
+                <button className="auth-btn">Login </button>
+              </div>
+              <div className="px-[20px]">
+                <div className="pt-[20px] bg-white ">
+                  <input
+                    className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
+                    type="number"
+                    placeholder="Phone Number *"
+                    required
+                  />
+                </div>
+                <div className=" bg-white ">
+                  <input
+                    className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
+                    type="password"
+                    placeholder="Password *"
+                    required
+                  />
+                </div>
+                <u className="text-sm text-blue-600">Forgot password?</u>
+                <button
+                  className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[20px]"
+                  onClick={() => setShowModal(!true)}
+                >
+                  <span className="font-bold text-[14px] text-white">
+                    Login
+                  </span>
+                </button>
+              </div>
+            </div>
+          ) : null}
 
-        {/* Profile Copyright */}
-        <div className="mt-[30px] w-[183px] mx-auto">
-          <img
-            src="https://www.dipmarts.com/wp-content/themes/dipmarts/assets/images/DiPMart-Horizontal-Logo.png"
-            alt="DipMart Logo"
-          />
-          <p className="text-center text-[12px] mt-[15px]">
-            Copyright © 2022 DiPMart. All <br /> rights reserved.
-          </p>
+          {/* Profile Copyright */}
+          <div className="mt-[30px] w-[183px] mx-auto">
+            <img
+              src="https://www.dipmarts.com/wp-content/themes/dipmarts/assets/images/DiPMart-Horizontal-Logo.png"
+              alt="DipMart Logo"
+            />
+            <p className="text-center text-[12px] mt-[15px]">
+              Copyright © 2022 DiPMart. All <br /> rights reserved.
+            </p>
+          </div>
         </div>
       </Layout>
     </>

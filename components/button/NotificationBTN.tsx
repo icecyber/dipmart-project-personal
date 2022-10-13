@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 
-const NortificationBTN = () => {
+const NotificationBTN = () => {
   return (
     <Link href="/">
       <a
@@ -29,4 +29,4 @@ const NortificationBTN = () => {
   );
 };
 
-export default NortificationBTN;
+export default NotificationBTN;

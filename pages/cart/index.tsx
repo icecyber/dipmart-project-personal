@@ -21,7 +21,7 @@ const CartPage = () => {
   }, []);
   return (
     <Layout title="My Cart">
-      <div>
+      <div className="px-4">
         <div className="grid grid-cols-3 content-center mb-[40px]">
           {/* Cart */}
           <div className="mx-auto">
@@ -168,16 +168,16 @@ const CartPage = () => {
             return <ProductItem product={product} key={product.id} />;
           })}
         </div>
-        {/* Total Button */}
-        <div className="grid grid-cols-3 bg-white py-4 px-4 my-5 rounded-lg ">
-          <div>
-            <span className="text-[14px] text-gray-400">Total</span>
-            <div className="text-[20px] font-bold text-blue-700">$1,199.00</div>
-          </div>
-          <button className="col-span-2 w-full py-[15px] bg-blue-900 text-center rounded-lg  text-white font-bold">
-            Checkout
-          </button>
+      </div>
+      {/* Total Button */}
+      <div className="grid grid-cols-3 bg-white py-4 px-4 my-5 rounded-lg border-t-2 ">
+        <div>
+          <span className="text-[14px] text-gray-400">Total</span>
+          <div className="text-[20px] font-bold text-blue-700">$1,199.00</div>
         </div>
+        <button className="col-span-2 w-full py-[15px] bg-blue-900 text-center rounded-lg  text-white font-bold">
+          Checkout
+        </button>
       </div>
     </Layout>
   );

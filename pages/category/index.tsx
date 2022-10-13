@@ -18,9 +18,9 @@ const CategoryPage = () => {
 
   return (
     <Layout title={'Category'}>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 px-4">
         {category?.map((data: any) => (
-          <div className="relative w-[160px] h-[150px] shadow-md" key={data.id}>
+          <div className="relative shadow-md" key={data.id}>
             <img className="rounded-md " src={data.image_id} alt={data.name} />
             <div className="absolute bottom-[10px] left-[10px] text-white">
               <p>{data.name}</p>

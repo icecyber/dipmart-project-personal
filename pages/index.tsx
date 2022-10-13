@@ -45,13 +45,14 @@ const Home: NextPage = () => {
 
   return (
     <Layout title="Homepage">
-      <Banner banner={slide} />
-      <div>
+      <div className="px-4 ">
+        <Banner banner={slide} />
+
         <div className="w-full h-auto md:full md:h-auto grid grid-cols-4 gap-4 md:grid-cols-5 my-[20px]">
           {brandname?.slice(0, 8).map((s) => (
             <div
               key={s.id}
-              className="relative  flex flex-col bg-white rounded-lg w-full py-[10px] mx-auto items-center"
+              className="relative  flex flex-col bg-white rounded-lg w-full py-[10px] mx-auto items-center shadow-md"
             >
               <Link href={'/'}>
                 <a>
@@ -69,11 +70,11 @@ const Home: NextPage = () => {
         <div className="d-flex justify-between mb-[20px]">
           <h2 className="text-lg font-bold">Popular</h2>
         </div>
-      </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
-        {product.map((product: any) => {
-          return <ProductItem product={product} key={product.id} />;
-        })}
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
+          {product.map((product: any) => {
+            return <ProductItem product={product} key={product.id} />;
+          })}
+        </div>
       </div>
     </Layout>
   );

@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import Link from 'next/link';
 import React from 'react';
-import { Notification } from './icon/Nortification';
+import { Notification } from './icon/Notification';
 import Search from './icon/Search';
 
 const TopNav = () => {
