@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
 import Link from 'next/link';
@@ -12,7 +13,7 @@ import Layout from '../../components/Layout';
 import SettingComponents from '../../components/SettingComponents';
 
 const ProfilePage = () => {
-const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false);
   const [toggleState, setToggleState] = useState(1);
 
   const toggleTab = (index: number) => {
