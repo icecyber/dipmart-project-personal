@@ -65,7 +65,7 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Product>();
   const [inWishlist, setInWishlist] = useState(product?.in_wishlist)
   useEffect(() => {
-    return (()=> {
+
       const fetchData = async () => {
         const res = await customAxios.post(
           '/api/method/dipmarts_app.api.productdetail',
@@ -77,7 +77,7 @@ const ProductDetail = () => {
       };
       fetchData();
 
-    })
+  
   }, [myroute]);
 
   const data = {product_id : product?.id}

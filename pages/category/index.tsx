@@ -11,7 +11,7 @@ const CategoryPage = () => {
   const [category, setCategory] = useState([]);
 
   useEffect(() => {
-    return (()=> {
+  
       const fetchData = async () => {
         const res = await customAxios.get(
           '/api/method/dipmarts_app.api.categorylist'
@@ -19,7 +19,7 @@ const CategoryPage = () => {
         setCategory(res.data.message.result.dipmart_cartgory);
       };
       fetchData();
-    })
+
   }, []);
 
   return (

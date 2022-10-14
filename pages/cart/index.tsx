@@ -57,10 +57,10 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    return (()=> {
+   
       fetchCartitem();
       fetchData();
-    })
+  
   }, []);
 
   const removeCart = (id:string) => {

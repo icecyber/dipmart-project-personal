@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
 import type { NextPage } from 'next';
 import Link from 'next/link';
@@ -34,9 +37,9 @@ const Home: NextPage = () => {
   const [allproduct, setAllproduct] = useState<Array<Data>>([]);
 
   useEffect(() => {
-    return () => {
+    
       fetchData();
-    };
+    
   }, []);
 
   const fetchData = async () => {
