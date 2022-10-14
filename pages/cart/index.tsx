@@ -252,21 +252,23 @@ const CartPage = () => {
         </div>
 
         {/* empty cart */}
-        <div className="w-[300px] mx-auto text-center grid grid-cols-1 gap-3">
+        <div className="w-[300px] md:w-[500px] mx-auto text-center grid grid-cols-1 gap-3">
           <Image
             src="/empty_cart.svg"
             alt="Empty_Cart"
-            width={204}
-            height={200}
+            width={500}
+            height={500}
           />
-          <span className="font-bold text-lg">Your Cart is Empty</span>
-          <p className="text-sm text-gray-400">
+          <span className="font-bold text-lg md:text-2xl">
+            Your Cart is Empty
+          </span>
+          <p className="text-sm md:text-lg text-gray-400">
             Browse product and add to cart
             <br /> to place order!
           </p>
           <button
             type="button"
-            className="bg-blue-900 py-4 rounded-2xl text-white font-bold"
+            className="bg-blue-900 py-4 rounded-2xl text-white font-bold md:text-2xl"
           >
             Start Shopping
           </button>
