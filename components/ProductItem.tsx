@@ -1,26 +1,44 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
 import Link from 'next/link';
 
+import customAxios from './axios/axiosHttp';
 import { ProductItemType } from './type';
 
 const ProductItem = ({ product }: ProductItemType) => {
+  const [inWishlist, setInWishlist] = useState(product.in_wishlist)
+
+  product.in_wishlist
+
+  const data = {product_id : product.id}
+
+  
+    const removeWishlist = () => {
+      customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
+      setInWishlist(false)
+    }
+  
+  const addToWishlist = () => {
+    customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
+    setInWishlist(true)    
+  }
+
   return (
     <div className="card relative">
       <div className="-left-1 absolute z-10 w-[60px] h-[18px] bg-[#3080DC] rounded-r-sm text-white text-[9px] flex justify-center items-center mt-[10px] ">
         {product?.is_top_sell}
       </div>
       {/* Heart Icon Outline */}
-      {product.in_wishlist ? 
-      <button className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10">
+      {inWishlist ? 
+      <button onClick={removeWishlist} className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-500">
             <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
         </svg>
       </button> 
       :
-      <button className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10">
+      <button onClick={addToWishlist} className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           fill="none"

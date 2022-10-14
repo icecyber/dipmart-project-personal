@@ -1,8 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
 import ProductItem from '../../components/ProductItem';
+
 interface Data {
   id: string;
 }
@@ -11,13 +16,16 @@ const CartPage = () => {
   const [product, setProduct] = useState<Array<Data>>([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await customAxios.get(
-        '/api/method/dipmarts_app.api.searchsuggestion'
-      );
-      setProduct(res.data.message.result);
-    };
-    fetchData();
+    return (()=> {
+      const fetchData = async () => {
+        const res = await customAxios.get(
+          '/api/method/dipmarts_app.api.searchsuggestion'
+        );
+        setProduct(res.data.message.result);
+      };
+      fetchData();
+
+    })
   }, []);
   return (
     <Layout title="My Cart">

@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Head from 'next/head';
+
 import CartBTN from './button/CartBTN';
 import CategoryBTN from './button/CategoryBTN';
 import HomeBTN from './button/HomeBTN';
@@ -25,8 +26,8 @@ function Layout({ title, children }: Props) {
       </Head>
       <div className="main-layout">
         {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
-        <main className="container m-auto mt-4 px-4">{children}</main>
-        <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white py-3 px-5 text-center z-50">
+        <main className="container m-auto mt-4">{children}</main>
+        <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white dark:bg-white py-3 px-5 text-center z-50">
           <HomeBTN />
           <CategoryBTN />
           <CartBTN />
