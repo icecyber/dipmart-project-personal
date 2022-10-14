@@ -1,5 +1,9 @@
-/* eslint-disable @next/next/no-img-element */
-import React, { useState } from 'react';
+import { useState } from 'react';
+
+import Link from 'next/link';
+
+import { Input } from '@material-tailwind/react';
+
 import ChavronRight from '../../components/icon/ChavronRight';
 import HeartIcon from '../../components/icon/HeartIcon';
 import OrderIcon from '../../components/icon/OrderIcon';
@@ -36,13 +40,15 @@ const ProfilePage = () => {
             <ChavronRight props={'text-white w-5 h-5 text-black'} />
           </div>
           {/* Order Button and Wish List */}
-          <div className="grid grid-cols-4 gap-[43px] mt-[30px] pb-[40px]">
-            <div className="w-[53px] h-[43px] ">
+          <div className="grid grid-cols-3 gap-[43px] mt-[30px] pb-[40px]">
+            <div className="w-[60px] h-[43px] ">
               <OrderIcon props={'w-[35px] m-auto'} />
               <span>Orders</span>
             </div>
-            <div className="w-[53px] h-[43px] m-auto">
-              <HeartIcon props={'w-[35px] m-auto'} />
+            <div className="w-[60px] h-[43px] m-auto">
+              <Link href={'/wishlist'}>
+                <HeartIcon props={'w-[35px] m-auto'} />
+              </Link>
               <span>Wishlist</span>
             </div>
           </div>

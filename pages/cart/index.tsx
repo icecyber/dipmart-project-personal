@@ -1,24 +1,73 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
 import ProductItem from '../../components/ProductItem';
+
 interface Data {
   id: string;
+}
+interface Cart {
+  final_price: number
+  product: Product
+}
+interface Product {
+  default_price: number
+  id: string
+  name: string
+  stock?: number
+  qty: number
+  primary_image: string
+  selection: Varraint[]
+}
+
+
+interface Varraint {
+  id: string
+  name: string
+  product_varraint_value: VarraintValue[]
+  
+}
+interface VarraintValue {
+  id: string
+  value?: any
+  note?: string
 }
 
 const CartPage = () => {
   const [product, setProduct] = useState<Array<Data>>([]);
+  const [cartitem, setCartitem] = useState<Array<Cart>>([])
+
+  const fetchCartitem = async () => {
+    const data = await customAxios.get(
+      '/api/method/dipmarts_app.api.cartlist'
+    )
+    setCartitem(data.data.message)
+  }
+
+  const fetchData = async () => {
+    const res = await customAxios.get(
+      '/api/method/dipmarts_app.api.cartrelate'
+    );
+    setProduct(res.data.message.list_product);
+  };
 
   useEffect(() => {
-    const fetchData = async () => {
-      const res = await customAxios.get(
-        '/api/method/dipmarts_app.api.searchsuggestion'
-      );
-      setProduct(res.data.message.result);
-    };
-    fetchData();
+    return (()=> {
+      fetchCartitem();
+      fetchData();
+    })
   }, []);
+
+  const removeCart = (id:string) => {
+    customAxios.post('/api/method/dipmarts_app.api.removecart', {id: id})
+  }
+
+
   return (
     <Layout title="My Cart">
       <div className="px-4">
@@ -91,63 +140,75 @@ const CartPage = () => {
         </div>
         <div className="border-y-2 border-white py-4 px-3 bg-white rounded-xl shadow-lg">
           <span className="text-[16px] font-bold">Review Order</span>
-          <div>
+          {cartitem.map((data:any)=>{
+            
+          return (
+            <div key={data.id}>
             <div className="flex py-5 justify-around">
-              <div className="">
-                <img
+              <img
                   className="w-[106px] h-[126px]"
-                  src="https://picsum.photos/200"
-                  alt=""
-                />
-              </div>
+                  src={data.selection_image}
+                  alt={data.product.name}
+              />
               <div className="grid grid-row">
                 <div className="flex justify-between">
-                  <h1 className="text-[14px]">iPhone 13 Pro</h1>
+                  <h1 className="text-[14px]">{data.product.name}</h1>
                 </div>
-
                 <span className="text-[12px] text-gray-500">
-                  Qty: &nbsp;<span className="text-black">1</span>
+                  Qty: &nbsp;<span className="text-black">
+                    {data.qty}
+                  </span>
                   &nbsp; &nbsp;
                 </span>
-
-                <span className="text-[12px]  text-gray-500">
-                  Capacity: &nbsp;<span className="text-black">256GB</span>
-                </span>
-
-                <div className="flex items-center">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    fill="currentColor"
-                    className="w-6 h-6 text-red-700 mr-2"
-                  >
-                    <path
-                      fillRule="evenodd"
-                      d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                      clipRule="evenodd"
-                    />
-                  </svg>
-                  <span className="text-[12px] text-gray-800">Red</span>
-                </div>
+                {data.selection.map((spec:any)=>{
+                  // if(spec.varriant_type === "Color") {
+                  //   (
+                  // <div className="flex items-center" >
+                  //   <svg
+                  //     xmlns="http://www.w3.org/2000/svg"
+                  //     viewBox="0 0 24 24"
+                  //     fill="currentColor"
+                  //     className={`w-6 h-6 mr-2 text-[${spec.product_varraint_value.value}]`}
+                  //   >
+                  //     <path
+                  //       fillRule="evenodd"
+                  //       d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
+                  //       clipRule="evenodd"
+                  //     />
+                  //     </svg>
+                  //   <span className="text-[12px] text-gray-800">a</span>
+                  // </div>)}
+                  return (
+                  <span key={spec.id} className="text-[12px] text-gray-500">
+                    {spec.name}: &nbsp;
+                    <span className="text-black">
+                      {spec.product_varraint_value.note}
+                    </span>
+                  </span>)
+                })
+                }
+                
                 <div className="flex items-center justify-between">
-                  <h1 className="font-bold">$1,199.00</h1>
+                  <h1 className="font-bold">$ {data.product.default_price}.00</h1>
                 </div>
               </div>
               <div className="flex flex-col justify-between">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-8 h-8 text-blue-700 self-end"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                  />
-                </svg>
+                <button type='button' onClick={()=>removeCart(data.id)} >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    strokeWidth={1.5}
+                    stroke="currentColor"
+                    className="w-8 h-8 text-blue-700 self-end"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      d="M9.75 9.75l4.5 4.5m0-4.5l-4.5 4.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                    />
+                  </svg>
+                </button>
                 <div className="flex">
                   <div className="border-2 border-blue-700 rounded-lg px-2">
                     -
@@ -160,12 +221,17 @@ const CartPage = () => {
               </div>
             </div>
           </div>
+          )
+        })}
+          
         </div>
         {/* Product you might like */}
         <div className="font-bold py-3">Product you might like</div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {product.slice(0, 2).map((product: any) => {
-            return <ProductItem product={product} key={product.id} />;
+            return <ProductItem product={product} key={product.id} pre_spec={{
+              spec: []
+            }} />;
           })}
         </div>
       </div>

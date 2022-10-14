@@ -1,5 +1,6 @@
+import React, { forwardRef } from 'react';
+
 import Link from 'next/link';
-import React from 'react';
 
 const NotificationBTN = () => {
   return (
@@ -29,4 +30,4 @@ const NotificationBTN = () => {
   );
 };
 
-export default NotificationBTN;
+export default forwardRef(NotificationBTN);

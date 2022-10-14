@@ -1,12 +1,15 @@
-import Link from 'next/link';
 import React from 'react';
+
+import Link from 'next/link';
 
 const ProfileBTN = () => {
   return (
     <Link href="/profile">
       <a
         type="button"
-        className="w-[40px] m-auto relative items-center py-2 text-sm font-medium text-center text-white  focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 active:border-2 active:border-t-4 active"
+        className="w-[40px] m-auto relative items-center py-2 text-sm font-medium text-center
+         text-white  focus:ring-4 focus:outline-none focus:ring-blue-300  dark:bg-white
+        dark:hover:text-blue-700 dark:focus:text-blue-800 active:border-2 active:border-t-4 active"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
