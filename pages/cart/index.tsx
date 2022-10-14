@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Image from 'next/image';
 import React, { useEffect, useState } from 'react';
 
 import customAxios from '../../components/axios/axiosHttp';
@@ -247,6 +248,27 @@ const CartPage = () => {
             className="col-span-2 w-full py-[15px] bg-blue-900 text-center rounded-lg  text-white font-bold"
           >
             Checkout
+          </button>
+        </div>
+
+        {/* empty cart */}
+        <div className="w-[300px] mx-auto text-center grid grid-cols-1 gap-3">
+          <Image
+            src="/empty_cart.svg"
+            alt="Empty_Cart"
+            width={204}
+            height={200}
+          />
+          <span className="font-bold text-lg">Your Cart is Empty</span>
+          <p className="text-sm text-gray-400">
+            Browse product and add to cart
+            <br /> to place order!
+          </p>
+          <button
+            type="button"
+            className="bg-blue-900 py-4 rounded-2xl text-white font-bold"
+          >
+            Start Shopping
           </button>
         </div>
       </div>

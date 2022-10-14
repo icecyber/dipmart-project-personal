@@ -2,13 +2,15 @@
 import { useState } from 'react';
 
 import Link from 'next/link';
+
+import { Input } from '@material-tailwind/react';
+
 import ChavronRight from '../../components/icon/ChavronRight';
 import HeartIcon from '../../components/icon/HeartIcon';
 import OrderIcon from '../../components/icon/OrderIcon';
 import ProfileIcon from '../../components/icon/ProfileIcon';
 import Layout from '../../components/Layout';
 import SettingComponents from '../../components/SettingComponents';
-import { Input } from '@material-tailwind/react';
 import React from 'react';
 
 const ProfilePage = () => {
@@ -62,6 +64,8 @@ const ProfilePage = () => {
           </div>
           {/* Login Button */}
           <button
+            name="openmodal-btn"
+            type="button"
             className="w-full py-[15px] bg-blue-900 text-center  rounded-lg mt-[30px]"
             onClick={() => setShowModal(true)}
           >
@@ -72,6 +76,8 @@ const ProfilePage = () => {
             <div className="w-full bg-white rounded-lg h-[350px] absolute m-auto left-0 right-0 z-[150] bottom-0 shadow-lg">
               <div className="grid grid-cols-2 shadow bg-white rounded-t-lg relative ">
                 <button
+                  name="sign-up"
+                  type="submit"
                   className={
                     toggleState === 1 ? 'tabs active-tabs auth-btn' : 'tabs'
                   }
@@ -80,6 +86,8 @@ const ProfilePage = () => {
                   Sign Up{' '}
                 </button>
                 <button
+                  name="sign-in"
+                  type="submit"
                   className={
                     toggleState === 2 ? 'tabs active-tabs auth-btn' : 'tabs'
                   }
@@ -115,6 +123,7 @@ const ProfilePage = () => {
                     className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
                     onClick={() => toggleTab(3)}
                     type="submit"
+                    name="forget-password"
                   >
                     Countinue
                   </button>
@@ -161,6 +170,7 @@ const ProfilePage = () => {
                     className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
                     onClick={() => toggleTab(3)}
                     type="submit"
+                    name="forgot-password"
                   >
                     Countinue
                   </button>
@@ -194,6 +204,7 @@ const ProfilePage = () => {
                     className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
                     onClick={() => setShowModal(!true)}
                     type="submit"
+                    name="forget-pw-btn"
                   >
                     Login
                   </button>

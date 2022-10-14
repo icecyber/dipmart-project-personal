@@ -1,22 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { Fragment, useEffect, useState } from 'react';
-
+import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
-
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
 } from '@material-tailwind/react';
-
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
 import { Fragment } from 'react';
-import {
-  Accordion,
-  AccordionHeader,
-  AccordionBody,
-} from '@material-tailwind/react';
 
 interface Product {
   id: string;
