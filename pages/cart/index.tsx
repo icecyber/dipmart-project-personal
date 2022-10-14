@@ -57,10 +57,10 @@ const CartPage = () => {
   };
 
   useEffect(() => {
-    return (()=> {
+   
       fetchCartitem();
       fetchData();
-    })
+  
   }, []);
 
   const removeCart = (id:string) => {
@@ -193,7 +193,7 @@ const CartPage = () => {
                 </div>
               </div>
               <div className="flex flex-col justify-between">
-                <button type='button' onClick={()=>removeCart(data.id)} >
+                <button type='button' onClick={()=>removeCart(data.id)} name='remove-card' >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
@@ -240,7 +240,7 @@ const CartPage = () => {
             <span className="text-[14px] text-gray-400">Total</span>
             <div className="text-[20px] font-bold text-blue-700">$1,199.00</div>
           </div>
-          <button className="col-span-2 w-full py-[15px] bg-blue-900 text-center rounded-lg  text-white font-bold">
+          <button type='button' name='checkout-btn' className="col-span-2 w-full py-[15px] bg-blue-900 text-center rounded-lg  text-white font-bold">
             Checkout
           </button>
         </div>

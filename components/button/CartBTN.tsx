@@ -11,7 +11,7 @@ const CartBTN = () => {
 
   const [badge, setBadge] = useState(0)
   useEffect(() => {
-    return () => {
+    
       const Badge = async () => {
         const res = await customAxios.get(
           '/api/method/dipmarts_app.api.cartlist'
@@ -19,7 +19,7 @@ const CartBTN = () => {
         setBadge(res.data.message.length);
       }
       Badge()
-    }
+    
   }, [])
   
   

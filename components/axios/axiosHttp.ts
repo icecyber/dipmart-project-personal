@@ -3,10 +3,10 @@ import axios from 'axios';
 import { ErrorAlert } from './alert';
 
 const customAxios = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_BaseUrl,
+  baseURL: 'https://dev.dipmarts.com',
   headers: {
     'Access-Control-Allow-Origin': '*',
-    Authorization: process.env.NEXT_PUBLIC_Token,
+    Authorization: 'Token 11ead2082295795:3ad6227be431637',
   },
 });
 customAxios.interceptors.response.use(
