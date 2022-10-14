@@ -21,7 +21,6 @@ function Layout({ title, children }: Props) {
   return (
     <>
       <Head>
-        <html lang='en'></html>
         <title>
           {title ? title + ' | DiPMart Ecommerce' : 'DiPMart Ecommerce'}
         </title>
@@ -39,7 +38,6 @@ function Layout({ title, children }: Props) {
           <ProfileBTN />
         </footer>
       </div>
-      
     </>
   );
 }
