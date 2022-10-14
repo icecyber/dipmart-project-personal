@@ -1,5 +1,7 @@
-import { Input } from '@material-tailwind/react';
 import React, { useEffect, useState } from 'react';
+
+import { Input, Option, Select } from '@material-tailwind/react';
+
 import customAxios from '../../components/axios/axiosHttp';
 import ListIcon from '../../components/icon/ListIcon';
 import SortIcon from '../../components/icon/SortIcon';
@@ -7,7 +9,7 @@ import SquareIcon from '../../components/icon/SquareIcon';
 import Layout from '../../components/Layout';
 import ProductItem from '../../components/ProductItem';
 import classes from './slug.module.css';
-import { Select, Option } from '@material-tailwind/react';
+
 interface Data {
   id: string;
 }
@@ -162,7 +164,15 @@ const ListingPage = () => {
       <div className="bg-gray-100 px-4 pt-4">
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {product.map((product: any) => {
-            return <ProductItem product={product} key={product.id} />;
+            return (
+              <ProductItem
+                product={product}
+                key={product.id}
+                pre_spec={{
+                  spec: [],
+                }}
+              />
+            );
           })}
         </div>
       </div>

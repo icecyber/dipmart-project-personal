@@ -1,9 +1,7 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState } from 'react';
 
 import Link from 'next/link';
-
-import { Input } from '@material-tailwind/react';
-
 import ChavronRight from '../../components/icon/ChavronRight';
 import HeartIcon from '../../components/icon/HeartIcon';
 import OrderIcon from '../../components/icon/OrderIcon';

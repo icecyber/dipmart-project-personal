@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
 import { useEffect, useState } from 'react';
 
@@ -33,9 +34,7 @@ const Home: NextPage = () => {
   const [allproduct, setAllproduct] = useState<Array<Data>>([]);
 
   useEffect(() => {
-    return () => {
-      fetchData();
-    };
+    fetchData();
   }, []);
 
   const fetchData = async () => {
@@ -121,13 +120,29 @@ const Home: NextPage = () => {
         </div>
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {product?.map((product: any, index) => {
-            return <ProductItem product={product} key={index} />;
+            return (
+              <ProductItem
+                product={product}
+                key={index}
+                pre_spec={{
+                  spec: [],
+                }}
+              />
+            );
           })}
         </div>
         <Banner banner={secondslide} />
         <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-5">
           {allproduct?.map((product: any, index) => {
-            return <ProductItem product={product} key={index} />;
+            return (
+              <ProductItem
+                product={product}
+                key={index}
+                pre_spec={{
+                  spec: [],
+                }}
+              />
+            );
           })}
         </div>
       </div>

@@ -43,6 +43,8 @@ const ProductItem = ({ product }: ProductItemType) => {
       {/* Heart Icon Outline */}
       {inWishlist ? (
         <button
+          type="button"
+          name="wishlist-btn"
           onClick={removeWishlist}
           className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10"
         >
@@ -57,6 +59,8 @@ const ProductItem = ({ product }: ProductItemType) => {
         </button>
       ) : (
         <button
+          type="button"
+          name="wishlist-btn"
           onClick={addToWishlist}
           className="w-[31px] h-[31px] bg-gray-200 rounded-full flex justify-center items-center absolute right-[10px] top-[10px] z-10"
         >
@@ -112,6 +116,7 @@ const ProductItem = ({ product }: ProductItemType) => {
           onClick={addToCart}
           className="w-[25px] h-[25px] rounded-full bg-white shadow-md flex justify-center items-center"
           type="button"
+          name="addtocart"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"

@@ -66,18 +66,16 @@ const ProductDetail = () => {
   const [product, setProduct] = useState<Product>();
   const [inWishlist, setInWishlist] = useState(product?.in_wishlist);
   useEffect(() => {
-    return () => {
-      const fetchData = async () => {
-        const res = await customAxios.post(
-          '/api/method/dipmarts_app.api.productdetail',
-          {
-            id: myroute,
-          }
-        );
-        setProduct(res.data.message);
-      };
-      fetchData();
+    const fetchData = async () => {
+      const res = await customAxios.post(
+        '/api/method/dipmarts_app.api.productdetail',
+        {
+          id: myroute,
+        }
+      );
+      setProduct(res.data.message);
     };
+    fetchData();
   }, [myroute]);
 
   const data = { product_id: product?.id };
@@ -95,7 +93,7 @@ const ProductDetail = () => {
     <Fragment>
       <Layout title={product?.name}>
         <div className="w-full relative px-4">
-          <button onClick={() => router.back()}>
+          <button onClick={() => router.back()} type="button" name="back-btn">
             <a className="absolute bg-gray-300 w-8 h-8 flex justify-center items-center rounded-lg shadow-md">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -126,11 +124,19 @@ const ProductDetail = () => {
               ${product?.default_price}
             </span>
             <div className="text-[15px] flex justify-end items-center">
-              <button className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]">
+              <button
+                type="button"
+                name="decrease-btn"
+                className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]"
+              >
                 -
               </button>
               <span className="text-center px-2">1</span>
-              <button className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]">
+              <button
+                type="button"
+                name="increase-btn"
+                className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]"
+              >
                 +
               </button>
             </div>
@@ -153,7 +159,7 @@ const ProductDetail = () => {
                       {productVarraint.product_varraint_value.map((data) => {
                         return (
                           <div
-                            className="bg-blue-800 rounded-md w-[57px] ml-[10px] first:ml-0"
+                            className="bg-blue-800 rounded-md ml-[10px] first:ml-0"
                             key={data.id}
                           >
                             <span className="text-white text-center text-[12px] font-normal py-[5px] px-[10px] ">
@@ -198,6 +204,8 @@ const ProductDetail = () => {
         <div className="grid grid-cols-5 py-4 px-4 my-5 rounded-lg border-t-2 gap-3">
           {inWishlist ? (
             <button
+              type="button"
+              name="remove-wishlist"
               onClick={removeWishlist}
               className="text-[20px] py-[10px] bg-white border-2 border-red-900 text-center rounded-lg  text-red-900 font-bold"
             >
@@ -212,8 +220,10 @@ const ProductDetail = () => {
             </button>
           ) : (
             <button
+              type="button"
+              name="add-wishlist"
               onClick={addToWishlist}
-              className="text-[20px] py-[10px] bg-white border-2 border-gray-700 text-center rounded-lg  text-gray-00 font-bold"
+              className="text-[20px] py-[10px] bg-white border-2 border-gray-700 text-center rounded-lg  text-gray-700 font-bold"
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -232,10 +242,18 @@ const ProductDetail = () => {
             </button>
           )}
 
-          <button className="col-span-2 w-full py-[10px] bg-white border-2 border-blue-900 text-center rounded-lg  text-blue-900 font-bold">
+          <button
+            type="button"
+            name="addtocart-btn"
+            className="col-span-2 w-full py-[10px] bg-white border-2 border-blue-900 text-center rounded-lg  text-blue-900 font-bold"
+          >
             Add to cart
           </button>
-          <button className="col-span-2 w-full py-[10px] bg-blue-900 text-center rounded-lg  text-white font-bold">
+          <button
+            type="button"
+            name="buynow-btn"
+            className="col-span-2 w-full py-[10px] bg-blue-900 text-center rounded-lg  text-white font-bold"
+          >
             Buy Now
           </button>
         </div>
