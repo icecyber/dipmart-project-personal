@@ -18,7 +18,7 @@ interface Product {
 
 const ListingPage = () => {
   const [product, setProduct] = useState<Array<Data>>([]);
-  const [isOpenDrawer, setOpenDrawer] = useState(false);
+  const [isOpenDrawer, setOpenDrawer] = useState(true);
   const [brandname, setBrandname] = useState<Array<Product>>([]);
   const [category, setCategory] = useState([]);
 

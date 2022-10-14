@@ -16,8 +16,10 @@ const TopNav = () => {
           />
         </Link>
         <div className="flex flex-row space-x-2">
-          <Link href={'/cart'}>
-            <Search />
+          <Link href={'/category/search'}>
+            <a>
+              <Search />
+            </a>
           </Link>
           <Link href={'/login'}>
             <Notification />
