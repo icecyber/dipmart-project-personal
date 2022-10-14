@@ -1,14 +1,20 @@
-import React from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+/* eslint-disable @next/next/no-img-element */
 import 'swiper/css';
 import 'swiper/css/pagination';
 
-import { Autoplay, Pagination } from 'swiper';
-import Image from 'next/image';
+import React from 'react';
+
+import {
+  Autoplay,
+  Pagination,
+} from 'swiper';
+import {
+  Swiper,
+  SwiperSlide,
+} from 'swiper/react';
 
 const Banner = ({ banner }: any) => {
   return (
-    <>
       <Swiper
         pagination={true}
         modules={[Pagination, Autoplay]}
@@ -20,11 +26,10 @@ const Banner = ({ banner }: any) => {
       >
         {banner?.map((data: any) => (
           <SwiperSlide key={data.id}>
-            <Image src={data.image} alt={data.name} layout="fill" />
+            <img src={data.image} alt={data.name} />
           </SwiperSlide>
         ))}
       </Swiper>
-    </>
   );
 };
 

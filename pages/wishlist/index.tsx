@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, {
   useEffect,
   useState,
@@ -64,7 +65,7 @@ const WishListPage = () => {
     <Layout title="Wishlist">
       {wishlist?.map((data:any, index:number)=>(
         <div className='relative' key={index}>
-          <button type="button" onClick={()=>removeHandler(data.id , index)} className="w-5 h-5 text-red-600 absolute right-5 z-10 top-2">
+          <button type="button" name='close-btn' onClick={()=>removeHandler(data.id , index)} className="w-5 h-5 text-red-600 absolute right-5 z-10 top-2">
               <CloseIcon />
           </button>
           <Link href={`/product/${data.id}`}>
