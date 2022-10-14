@@ -9,6 +9,7 @@ import ProfileIcon from '../../components/icon/ProfileIcon';
 import Layout from '../../components/Layout';
 import SettingComponents from '../../components/SettingComponents';
 import { Input } from '@material-tailwind/react';
+import React from 'react';
 
 const ProfilePage = () => {
   const [showModal, setShowModal] = useState(false);
