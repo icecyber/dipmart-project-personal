@@ -25,7 +25,6 @@ interface Data {
 interface Product {
   id: string;
   name: string;
-
 }
 
 const ListingPage = () => {

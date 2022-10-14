@@ -68,7 +68,6 @@ const CartPage = () => {
 
   return (
     <Layout title="My Cart">
-      
       {(cartitem.length === 0) &&
         <div className="w-[300px] mx-auto text-center grid grid-cols-1 gap-3">
           <Image

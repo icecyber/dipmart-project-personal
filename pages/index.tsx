@@ -1,6 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useState } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
 
 import type { NextPage } from 'next';
 import Link from 'next/link';
@@ -93,7 +96,7 @@ const Home: NextPage = () => {
                 key={s.id}
                 className="relative  flex flex-col bg-white rounded-lg w-full py-[10px] mx-auto items-center"
               >
-                <Link href={'/'} passHref>
+                <Link href={`/shopbybrand/${s.id}`} passHref>
                   <a>
                     <img
                       className="w-[37px] h-[37px] md:w-[37px] md:h-[37px] mx-auto object-contain"

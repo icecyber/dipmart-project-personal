@@ -10,8 +10,6 @@ import { ProductItemType } from './type';
 const ProductItem = ({ product }: ProductItemType) => {
   const [inWishlist, setInWishlist] = useState(product.in_wishlist);
 
-  product.in_wishlist;
-
   const data = { product_id: product.id };
 
   const removeWishlist = () => {
