@@ -1,6 +1,11 @@
+import React, {
+  useEffect,
+  useState,
+} from 'react';
+
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import router from 'next/router';
 
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
@@ -37,6 +42,8 @@ interface VarraintValue {
 const CartPage = () => {
   const [product, setProduct] = useState<Array<Data>>([]);
   const [cartitem, setCartitem] = useState<Array<Cart>>([]);
+  console.log(cartitem);
+  
 
   const fetchCartitem = async () => {
     const data = await customAxios.get('/api/method/dipmarts_app.api.cartlist');
@@ -61,7 +68,33 @@ const CartPage = () => {
 
   return (
     <Layout title="My Cart">
-      <div className="px-4">
+      
+      {(cartitem.length === 0) &&
+        <div className="w-[300px] mx-auto text-center grid grid-cols-1 gap-3">
+          <Image
+            src="/empty_cart.svg"
+            alt="Empty_Cart"
+            width={204}
+            height={200}
+          />
+          <span className="font-bold text-lg">Your Cart is Empty</span>
+          <p className="text-sm text-gray-400">
+            Browse product and add to cart
+            <br /> to place order!
+          </p>
+          <button
+            onClick={()=>{
+              router.push('/')
+            }}
+            type="button"
+            name='shopping'
+            className="bg-blue-900 py-4 rounded-2xl text-white font-bold"
+          >
+            Start Shopping
+          </button>
+        </div>}
+
+        {cartitem.length >= 1 && <div className="px-4">
         <div className="grid grid-cols-3 content-center mb-[40px]">
           {/* Cart */}
           <div className="mx-auto">
@@ -149,23 +182,6 @@ const CartPage = () => {
                       &nbsp; &nbsp;
                     </span>
                     {data.selection.map((spec: any) => {
-                      // if(spec.varriant_type === "Color") {
-                      //   (
-                      // <div className="flex items-center" >
-                      //   <svg
-                      //     xmlns="http://www.w3.org/2000/svg"
-                      //     viewBox="0 0 24 24"
-                      //     fill="currentColor"
-                      //     className={`w-6 h-6 mr-2 text-[${spec.product_varraint_value.value}]`}
-                      //   >
-                      //     <path
-                      //       fillRule="evenodd"
-                      //       d="M2.25 12c0-5.385 4.365-9.75 9.75-9.75s9.75 4.365 9.75 9.75-4.365 9.75-9.75 9.75S2.25 17.385 2.25 12zm13.36-1.814a.75.75 0 10-1.22-.872l-3.236 4.53L9.53 12.22a.75.75 0 00-1.06 1.06l2.25 2.25a.75.75 0 001.14-.094l3.75-5.25z"
-                      //       clipRule="evenodd"
-                      //     />
-                      //     </svg>
-                      //   <span className="text-[12px] text-gray-800">a</span>
-                      // </div>)}
                       return (
                         <span
                           key={spec.id}
@@ -250,28 +266,8 @@ const CartPage = () => {
             Checkout
           </button>
         </div>
-
-        {/* empty cart */}
-        <div className="w-[300px] mx-auto text-center grid grid-cols-1 gap-3">
-          <Image
-            src="/empty_cart.svg"
-            alt="Empty_Cart"
-            width={204}
-            height={200}
-          />
-          <span className="font-bold text-lg">Your Cart is Empty</span>
-          <p className="text-sm text-gray-400">
-            Browse product and add to cart
-            <br /> to place order!
-          </p>
-          <button
-            type="button"
-            className="bg-blue-900 py-4 rounded-2xl text-white font-bold"
-          >
-            Start Shopping
-          </button>
-        </div>
-      </div>
+      </div>}
+      
     </Layout>
   );
 };
