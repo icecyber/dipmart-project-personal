@@ -37,9 +37,7 @@ const Home: NextPage = () => {
   const [allproduct, setAllproduct] = useState<Array<Data>>([]);
 
   useEffect(() => {
-    
-      fetchData();
-    
+    fetchData();
   }, []);
 
   const fetchData = async () => {
