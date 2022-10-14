@@ -203,7 +203,7 @@ const ProductDetail = () => {
                 </svg>
             </button>
             :
-            <button onClick={addToWishlist} className="text-[20px] py-[10px] bg-white border-2 border-gray-700 text-center rounded-lg  text-gray-700 font-bold">
+            <button onClick={addToWishlist} className="text-[20px] py-[10px] bg-white border-2 border-gray-700 text-center rounded-lg  text-gray-00 font-bold">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
