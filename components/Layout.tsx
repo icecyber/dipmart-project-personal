@@ -14,7 +14,10 @@ interface Props {
   title: any;
 }
 
+
 function Layout({ title, children }: Props) {
+
+
   return (
     <>
       <Head>
@@ -27,7 +30,7 @@ function Layout({ title, children }: Props) {
       <div className="main-layout">
         {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
         <main className="container m-auto mt-4">{children}</main>
-        <footer className="grid grid-cols-5 gap-10  h-auto shadow-inner  sticky bottom-0 bg-white dark:bg-white py-3 px-5 text-center z-50">
+        <footer className="grid grid-cols-5 gap-10  shadow-inner  sticky bottom-0 bg-white dark:bg-white py-3 px-5 text-center z-50">
           <HomeBTN />
           <CategoryBTN />
           <CartBTN />

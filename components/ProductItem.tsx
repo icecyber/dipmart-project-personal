@@ -8,7 +8,7 @@ import customAxios from './axios/axiosHttp';
 import { ProductItemType } from './type';
 
 const ProductItem = ({ product }: ProductItemType) => {
-  const [inWishlist, setInWishlist] = useState(product.in_wishlist)
+  const [inWishlist, setInWishlist] = useState(product.in_wishlist)  
 
   product.in_wishlist
 
@@ -20,10 +20,27 @@ const ProductItem = ({ product }: ProductItemType) => {
       setInWishlist(false)
     }
   
-  const addToWishlist = () => {
-    customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
-    setInWishlist(true)    
-  }
+    const addToWishlist = () => {
+      customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
+      setInWishlist(true)    
+    }
+
+    const cartBody = {
+      "product_id": product.id,
+      "selection": [
+          product.pre_spec.spec[0],
+          product.pre_spec.spec[1]
+      ],
+      "qty": 1,
+      "noted": ""
+    }
+    const addToCart = () => {
+      customAxios.post('/api/method/dipmarts_app.api.addtocart', 
+        cartBody
+      )
+      console.log(addToCart);
+      
+    }
 
   return (
     <div className="card relative">
@@ -87,6 +104,7 @@ const ProductItem = ({ product }: ProductItemType) => {
           
         </div>
         <button
+          onClick={addToCart}
           className="w-[25px] h-[25px] rounded-full bg-white shadow-md flex justify-center items-center"
           type="button"
         >

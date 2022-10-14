@@ -53,35 +53,44 @@ const WishListPage = () => {
       window.addEventListener('scroll', handleScroll)
       return ()=> window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  const removeHandler = (id:string,index:number) => {
+    customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', {product_id : id})
+    setWishlist((prev)=>prev.filter((e,i)=>i !== index))
+  }
   
 
   return (
     <Layout title="Wishlist">
-      {wishlist?.map((data:any)=>(
-        <Link key={data.id} href={`/product/${data.id}`}>
-          <div className=" h-[104] bg-white flex p-[10px] rounded-md relative mx-4 mb-4">
-            <div className="w-[80px] h-[84px] bg-gray-200 flex justify-center items-center rounded-md">
-              <img
-                src={data.primary_image}
-                alt={data.name}
-                className="w-[42px] h-[54px]"
-              />
-            </div>
-            <div className="flex flex-col ml-[10px]">
-              <div className="flex items-center pb-[8px] ">
-                <span className="text-[14px] font-bold">
-                  {data.name}
-                </span>
-                <div className="w-5 h-5 text-red-600 absolute right-5">
-                  <CloseIcon />
-                </div>
+      {wishlist?.map((data:any, index:number)=>(
+        <div className='relative' key={index}>
+          <button type="button" onClick={()=>removeHandler(data.id , index)} className="w-5 h-5 text-red-600 absolute right-5 z-10 top-2">
+              <CloseIcon />
+          </button>
+          <Link href={`/product/${data.id}`}>
+            <div className=" h-[104] bg-white flex p-[10px] rounded-md relative mx-4 mb-4">
+              <div className="w-[80px] h-[84px] bg-gray-200 flex justify-center items-center rounded-md">
+                <img
+                  src={data.primary_image}
+                  alt={data.name}
+                  className="w-[42px] h-[54px]"
+                />
               </div>
-              <span className="text-[14px] text-gray-400">
-                ${data.default_price}
-              </span>
+              <div className="flex flex-col ml-[10px]">
+                <div className="flex items-center pb-[8px] ">
+                  <span className="text-[14px] font-bold">
+                    {data.name}
+                  </span>
+                  
+                </div>
+                <span className="text-[14px] text-gray-400">
+                  ${data.default_price}
+                </span>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
+        
       ))
       }
       

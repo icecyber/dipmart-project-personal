@@ -24,6 +24,7 @@ interface Product {
   stock: number;
   product_varraint: ProductVarraint[];
   product_spec: ProductSpec[];
+  in_wishlist: boolean
 }
 
 interface ProductSpec {
@@ -55,12 +56,14 @@ const ProductDetail = () => {
   const router = useRouter();
   const myroute = router.query.id;
   const [open, setOpen] = useState(-1);
+  
 
   const handleOpen = (index: number) => {
     setOpen(open === index ? -1 : index);
   };
 
   const [product, setProduct] = useState<Product>();
+  const [inWishlist, setInWishlist] = useState(product?.in_wishlist)
   useEffect(() => {
     return (()=> {
       const fetchData = async () => {
@@ -69,13 +72,24 @@ const ProductDetail = () => {
           {
             id: myroute,
           }
-        );
-        setProduct(await res.data.message);
+        );        
+        setProduct(res.data.message);
       };
       fetchData();
 
     })
   }, [myroute]);
+
+  const data = {product_id : product?.id}
+  const removeWishlist = () => {
+    customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
+    setInWishlist(false)
+  }
+
+  const addToWishlist = () => {
+    customAxios.post('/api/method/dipmarts_app.api.itemtowishlist', data)
+    setInWishlist(true)    
+  }
 
   return (
     <Fragment>
@@ -106,11 +120,11 @@ const ProductDetail = () => {
           />
         </div>
         <div className="bg-gray-200 px-4 rounded-t-xl">
-          <h1 className="font-bold text-[20px] py-[10px]">{product?.name}</h1>
+          <p className="font-bold text-[20px] py-[10px]">{product?.name}</p>
           <div className="grid grid-cols-2 ">
-            <h1 className="text-[20px] text-blue-800">
+            <span className="text-[20px] text-blue-800">
               ${product?.default_price}
-            </h1>
+            </span>
             <div className="text-[15px] flex justify-end items-center">
               <button className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]">
                 -
@@ -134,17 +148,17 @@ const ProductDetail = () => {
                     className="font-bold text-[16px]"
                     key={productVarraint.id}
                   >
-                    <h1 className="py-[10px]">{productVarraint.name}</h1>
+                    <span className="py-[10px]">{productVarraint.name}</span>
                     <div className="flex">
                       {productVarraint.product_varraint_value.map((data) => {
                         return (
                           <div
-                            className="bg-blue-800 rounded-md w-[57px] last:ml-[10px]"
+                            className="bg-blue-800 rounded-md w-[57px] ml-[10px] first:ml-0"
                             key={data.id}
                           >
-                            <p className="text-white text-center text-[12px] font-normal py-[5px] px-[10px] ">
+                            <span className="text-white text-center text-[12px] font-normal py-[5px] px-[10px] ">
                               {data.note}
-                            </p>
+                            </span>
                           </div>
                         );
                       })}
@@ -154,11 +168,11 @@ const ProductDetail = () => {
               </div>
             </div>
             {/* Description */}
-            <p className="pt-3 col-span-2 text-[15px]">
+            <span className="pt-3 col-span-2 text-[15px]">
               Lorem ipsum dolor sit, amet consectetur adipisicing elit. At ad
               tenetur possimus eum, ipsam expedita amet aliquid molestias
               eligendi atque praesentium cupiditate quaerat odit
-            </p>
+            </span>
             {/* Product Description */}
             {product?.product_spec.map((data: any, index) => {
               return (
@@ -168,11 +182,11 @@ const ProductDetail = () => {
                       {data.value}
                     </AccordionHeader>
                     <AccordionBody>
-                      <p>
+                      <div>
                         {data.value_spec.map((data: any) => (
-                          <p key={data.id}>{data.value}</p>
+                          <span key={data.id}>{data.value}</span>
                         ))}
-                      </p>
+                      </div>
                     </AccordionBody>
                   </Accordion>
                 </div>
@@ -182,24 +196,31 @@ const ProductDetail = () => {
         </div>
         {/* Total Button */}
         <div className="grid grid-cols-5 py-4 px-4 my-5 rounded-lg border-t-2 gap-3">
-          <div>
-            <div className="text-[20px] py-[10px] bg-white border-2 border-blue-900 text-center rounded-lg  text-blue-900 font-bold">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth={1.5}
-                stroke="currentColor"
-                className="w-6 h-6 mx-auto"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
-                />
-              </svg>
-            </div>
-          </div>
+          {inWishlist ? 
+            <button onClick={removeWishlist} className="text-[20px] py-[10px] bg-white border-2 border-red-900 text-center rounded-lg  text-red-900 font-bold">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6 text-red-500 mx-auto">
+                    <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                </svg>
+            </button>
+            :
+            <button onClick={addToWishlist} className="text-[20px] py-[10px] bg-white border-2 border-gray-700 text-center rounded-lg  text-gray-700 font-bold">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={1.5}
+                  stroke="currentColor"
+                  className="w-6 h-6 mx-auto"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M21 8.25c0-2.485-2.099-4.5-4.688-4.5-1.935 0-3.597 1.126-4.312 2.733-.715-1.607-2.377-2.733-4.313-2.733C5.1 3.75 3 5.765 3 8.25c0 7.22 9 12 9 12s9-4.78 9-12z"
+                  />
+                </svg>
+            </button>
+            }
+          
           <button className="col-span-2 w-full py-[10px] bg-white border-2 border-blue-900 text-center rounded-lg  text-blue-900 font-bold">
             Add to cart
           </button>
