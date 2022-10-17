@@ -114,23 +114,6 @@ const WishListPage = () => {
           </p>
         </div>
         )}
-        
-      {/* Empty Wishlist */}
-      {wishlist.length === 0 && (
-        <div className="w-[300px] mx-auto text-center flex flex-col relative top-24 ">
-          <Image
-            src="/empty_wishlist.svg"
-            alt="Empty_Wishlist"
-            width={254}
-            height={250}
-          />
-          <span className="font-bold text-lg">Empty Wish List</span>
-          <p className="text-sm text-gray-400">
-            You haven’t added any items
-            <br /> to your Wish List yet.
-          </p>
-        </div>
-      )}
     </Layout>
   );
 };
