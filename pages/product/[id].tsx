@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
@@ -44,6 +45,14 @@ interface ProductVarraintValue {
   price: number;
   status: string;
   value: string;
+}
+
+interface ProductFeature {
+  id: string;
+  name: string;
+  value: string;
+  image_path: string;
+  image: string;
 }
 
 const ProductDetail = () => {

@@ -23,8 +23,10 @@ const TopNav = () => {
               <Search />
             </a>
           </Link>
-          <Link href={'/login'}>
-            <Notification />
+          <Link href={'/notification'}>
+            <a>
+              <Notification />
+            </a>
           </Link>
         </div>
       </nav>
