@@ -6,7 +6,7 @@ import {
   Accordion,
   AccordionBody,
   AccordionHeader,
-} from '@material-tailwind/react';
+} from '@material-tailwind/react/components/Accordion';
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
 import { Fragment } from 'react';
