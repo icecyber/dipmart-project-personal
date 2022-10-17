@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable @next/next/no-img-element */
 import React, {
   Fragment,
@@ -50,6 +51,14 @@ interface ProductVarraintValue {
   price: number;
   status: string;
   value: string;
+}
+
+interface ProductFeature {
+  id: string;
+  name: string;
+  value: string;
+  image_path: string;
+  image: string;
 }
 
 const ProductDetail = () => {
@@ -171,6 +180,12 @@ const ProductDetail = () => {
                 ))}
               </div>
             </div>
+            {/* Description */}
+            <span className="pt-3 col-span-2 text-[15px]">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At ad
+              tenetur possimus eum, ipsam expedita amet aliquid molestias
+              eligendi atque praesentium cupiditate quaerat odit
+            </span>
             {/* Product Description */}
             <h1 className="pt-3 col-span-2 text-[15px]">Product Description</h1>
             {product?.product_spec.map((data: any, index) => {
