@@ -75,28 +75,45 @@ const WishListPage = () => {
               className="w-5 h-5 text-red-600 absolute right-5 z-10 top-2"
             >
               <CloseIcon />
-          </button>
-          <Link href={`/product/${data.id}`}>
-            <div className=" h-[104] bg-white flex p-[10px] rounded-md relative mx-4 mb-4">
-              <div className="w-[80px] h-[84px] bg-gray-200 flex justify-center items-center rounded-md">
-                <img
-                  src={data.primary_image}
-                  alt={data.name}
-                  className="w-[42px] h-[54px]"
-                />
-              </div>
-              <div className="flex flex-col ml-[10px]">
-                <div className="flex items-center pb-[8px] ">
-                    <span className="text-[14px] font-bold">{data.name}</span>
+            </button>
+            <Link href={`/product/${data.id}`}>
+              <div className=" h-[104] bg-white flex p-[10px] rounded-md relative mx-4 mb-4">
+                <div className="w-[80px] h-[84px] bg-gray-200 flex justify-center items-center rounded-md">
+                  <img
+                    src={data.primary_image}
+                    alt={data.name}
+                    className="w-[42px] h-[54px]"
+                  />
                 </div>
-                <span className="text-[14px] text-gray-400">
-                  ${data.default_price}
-                </span>
+                <div className="flex flex-col ml-[10px]">
+                  <div className="flex items-center pb-[8px] ">
+                    <span className="text-[14px] font-bold">{data.name}</span>
+                  </div>
+                  <span className="text-[14px] text-gray-400">
+                    ${data.default_price}
+                  </span>
+                </div>
               </div>
-            </div>
-          </Link>
-        </div>
+            </Link>
+          </div>
         ))}
+
+      {/* Empty Wishlist */}
+      {wishlist.length === 0 && (
+        <div className="w-[300px] mx-auto text-center flex flex-col relative top-24 ">
+          <Image
+            src="/empty_wishlist.svg"
+            alt="Empty_Wishlist"
+            width={254}
+            height={250}
+          />
+          <span className="font-bold text-lg">Empty Wish List</span>
+          <p className="text-sm text-gray-400">
+            You haven’t added any items
+            <br /> to your Wish List yet.
+          </p>
+        </div>
+        )}
         
       {/* Empty Wishlist */}
       {wishlist.length === 0 && (

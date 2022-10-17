@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 
-import { Input } from '@material-tailwind/react';
+import { Input } from '@material-tailwind/react/components/Input';
 
 // import { Input } from '@material-tailwind/react/components/Input';
 import ChavronRight from '../../components/icon/ChavronRight';
@@ -103,22 +103,21 @@ const ProfilePage = () => {
                 }
               >
                 <div className="px-[20px]">
-                  <div className="pt-[20px] bg-white mb-[10px]">
-                    <h1 className="font-bold text-[18px]">
+                  <div className="pt-[20px] bg-white py-[10px]">
+                    <h1 className="font-bold text-[18px] pt-3">
                       Register with Phone Number
                     </h1>
-                    <span className="text-[12px] text-gray-400">
+                    <div className="text-[12px] text-gray-400 py-3">
                       Please enter your phone number to continue
-                    </span>
+                    </div>
                     <Input
-                      className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px] "
+                      className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg  "
                       type="number"
                       required
-                      label="Phone Number"
+                      placeholder="Phone Number"
                     />
                   </div>
 
-                  <u className="text-sm text-blue-600">Forgot password?</u>
                   <button
                     className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
                     onClick={() => toggleTab(3)}
@@ -164,8 +163,6 @@ const ProfilePage = () => {
                       />
                     </div>
                   </div>
-
-                  <u className="text-sm text-blue-600">Forgot password?</u>
                   <button
                     className="w-full py-[15px] bg-blue-900 text-center font-bold text-[14px] text-white rounded-lg mt-[20px]"
                     onClick={() => toggleTab(3)}
@@ -188,7 +185,7 @@ const ProfilePage = () => {
                       className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
                       type="number"
                       required
-                      label="Phone Number"
+                      placeholder="Phone Number"
                     />
                   </div>
                   <div className=" bg-white mb-[10px]">
@@ -196,7 +193,7 @@ const ProfilePage = () => {
                       className="w-full bg-gray-200 py-[10px] pl-[10px] rounded-lg mb-[20px]"
                       type="password"
                       required
-                      label="Password"
+                      placeholder="Password"
                     />
                   </div>
                   <u className="text-sm text-blue-600">Forgot password?</u>

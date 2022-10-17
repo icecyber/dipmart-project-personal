@@ -12,6 +12,7 @@ import TovNavCategory from './TovNavCategory';
 interface Props {
   children: any;
   title: any;
+  icon?: any;
 }
 
 function Layout({ title, children }: Props) {
@@ -25,7 +26,9 @@ function Layout({ title, children }: Props) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="main-layout">
-        {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
+        <div className="relative">
+          {title === 'Homepage' ? <TopNav /> : <TovNavCategory title={title} />}
+        </div>
         <main className="container m-auto mt-4">{children}</main>
         <footer className="grid grid-cols-5 gap-10  shadow-inner  sticky bottom-0 bg-white dark:bg-white py-3 px-5 text-center z-50">
           <HomeBTN />
