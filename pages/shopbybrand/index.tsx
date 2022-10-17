@@ -7,7 +7,7 @@ import React, {
 
 import Image from 'next/image';
 
-import { Input } from '@material-tailwind/react';
+import { Input } from '@material-tailwind/react/components/Input';
 
 import customAxios from '../../components/axios/axiosHttp';
 import ListIcon from '../../components/icon/ListIcon';
