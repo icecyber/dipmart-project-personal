@@ -1,14 +1,20 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { useEffect, useState } from 'react';
+import React, {
+  Fragment,
+  useEffect,
+  useState,
+} from 'react';
+
 import { useRouter } from 'next/router';
+
 import {
   Accordion,
   AccordionBody,
   AccordionHeader,
 } from '@material-tailwind/react';
+
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
-import { Fragment } from 'react';
 
 interface Product {
   id: string;
@@ -165,13 +171,8 @@ const ProductDetail = () => {
                 ))}
               </div>
             </div>
-            {/* Description */}
-            <span className="pt-3 col-span-2 text-[15px]">
-              Lorem ipsum dolor sit, amet consectetur adipisicing elit. At ad
-              tenetur possimus eum, ipsam expedita amet aliquid molestias
-              eligendi atque praesentium cupiditate quaerat odit
-            </span>
             {/* Product Description */}
+            <h1 className="pt-3 col-span-2 text-[15px]">Product Description</h1>
             {product?.product_spec.map((data: any, index) => {
               return (
                 <div className="col-span-2" key={data.id}>

@@ -1,26 +1,21 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React from 'react';
 
 import Link from 'next/link';
 
-import customAxios from '../axios/axiosHttp';
-
 const CartBTN = () => {
 
-  const [badge, setBadge] = useState(0)
-  useEffect(() => {
+  // const [badge, setBadge] = useState(0)
+  // useEffect(() => {
     
-      const Badge = async () => {
-        const res = await customAxios.get(
-          '/api/method/dipmarts_app.api.cartlist'
-        );
-        setBadge(res.data.message.length);
-      }
-      Badge()
+  //     const Badge = async () => {
+  //       const res = await customAxios.get(
+  //         '/api/method/dipmarts_app.api.cartlist'
+  //       );
+  //       setBadge(res.data.message.length);
+  //     }
+  //     Badge()
     
-  }, [])
+  // }, [])
   
   
 
@@ -47,9 +42,9 @@ const CartBTN = () => {
           />
         </svg>
         <span className="sr-only">Notifications</span>
-        {badge > 0 &&
+        {/* {badge > 0 &&
           <div className="badge-overlay">{badge}</div>   
-        }
+        } */}
       </a>
     </Link>
   );

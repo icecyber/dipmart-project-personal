@@ -17,14 +17,16 @@ const TopNav = () => {
             alt="logo"
           />
         </Link>
-        <div className="flex flex-row space-x-2">
+        <div className="flex flex-row space-x-2 text-[#181870]">
           <Link href={'/category/search'}>
             <a>
               <Search />
             </a>
           </Link>
           <Link href={'/login'}>
-            <Notification />
+            <a>
+              <Notification />
+            </a>
           </Link>
         </div>
       </nav>

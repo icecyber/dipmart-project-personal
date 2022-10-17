@@ -42,7 +42,6 @@ interface VarraintValue {
 const CartPage = () => {
   const [product, setProduct] = useState<Array<Data>>([]);
   const [cartitem, setCartitem] = useState<Array<Cart>>([]);
-  console.log(cartitem);
   
 
   const fetchCartitem = async () => {
@@ -255,7 +254,9 @@ const CartPage = () => {
         <div className="grid grid-cols-3 bg-white py-4 px-4 my-5 rounded-lg ">
           <div>
             <span className="text-[14px] text-gray-400">Total</span>
-            <div className="text-[20px] font-bold text-blue-700">$1,199.00</div>
+            <div className="text-[20px] font-bold text-blue-700">
+              $ {cartitem.reduce((a, b)=>a + b.final_price, 0)}
+            </div>
           </div>
           <button
             type="button"

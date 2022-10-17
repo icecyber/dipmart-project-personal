@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { forwardRef } from 'react';
 
-const HeartIcon = (props: any) => {
+const HeartIcon = () => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -8,7 +8,7 @@ const HeartIcon = (props: any) => {
       viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor"
-      className={props.props}
+      className='w-[35px] m-auto'
     >
       <path
         strokeLinecap="round"
@@ -19,4 +19,4 @@ const HeartIcon = (props: any) => {
   );
 };
 
-export default HeartIcon;
+export default forwardRef(HeartIcon);
