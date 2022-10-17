@@ -53,7 +53,8 @@ const CartPage = () => {
     const res = await customAxios.get(
       '/api/method/dipmarts_app.api.cartrelate'
     );
-    setProduct(res.data.message.list_product);
+    const newData:any = res.data.message.list_product;
+    setProduct((oldData) => [...oldData, ...newData])
   };
 
   useEffect(() => {
@@ -61,8 +62,9 @@ const CartPage = () => {
     fetchData();
   }, []);
 
-  const removeCart = (id: string) => {
+  const removeCart = (id: string, index:number) => {
     customAxios.post('/api/method/dipmarts_app.api.removecart', { id: id });
+    setCartitem((prev) => prev.filter((e, i) => i !== index))
   };
 
   return (
@@ -92,7 +94,7 @@ const CartPage = () => {
           </button>
         </div>}
 
-        {cartitem.length >= 1 && <div className="px-4">
+        {cartitem.length > 0 && <div className="px-4">
         <div className="grid grid-cols-3 content-center mb-[40px]">
           {/* Cart */}
           <div className="mx-auto">
@@ -162,9 +164,9 @@ const CartPage = () => {
         </div>
         <div className="border-y-2 border-white py-4 px-3 bg-white rounded-xl shadow-lg">
           <span className="text-[16px] font-bold">Review Order</span>
-          {cartitem.map((data: any) => {
+          {cartitem.map((data: any, index:number) => {
             return (
-              <div key={data.id}>
+              <div key={index}>
                 <div className="flex py-5 justify-around">
                   <img
                     className="w-[106px] h-[126px]"
@@ -202,8 +204,9 @@ const CartPage = () => {
                   <div className="flex flex-col justify-between">
                     <button
                       type="button"
-                      onClick={() => removeCart(data.id)}
+                      onClick={() => removeCart(data.id, index)}
                       name="remove-card"
+                      className='ml-auto'
                     >
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -211,7 +214,7 @@ const CartPage = () => {
                         viewBox="0 0 24 24"
                         strokeWidth={1.5}
                         stroke="currentColor"
-                        className="w-8 h-8 text-blue-700 self-end"
+                        className="w-8 h-8 text-blue-700"
                       >
                         <path
                           strokeLinecap="round"

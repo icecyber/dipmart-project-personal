@@ -37,9 +37,9 @@ const ListingPage = () => {
 
   const fetchData = async () => {
     const res = await customAxios.get(
-      '/api/method/dipmarts_app.api.homepage'
+      '/api/method/dipmarts_app.api.brandlist?is_web=1'
     );
-    setBrandname(res.data.message.shop_by_brands);
+    setBrandname(res.data.message);
   };
   const fetchDataCategory = async () => {
     const res = await customAxios.get(
@@ -51,7 +51,7 @@ const ListingPage = () => {
   useEffect(()=> {
     fetchData();
     fetchDataCategory();
-  })
+  }, [])
 
   const router = useRouter()
   let param = router.query.slug
@@ -106,7 +106,7 @@ const ListingPage = () => {
         </div>
         <div className="mt-5">
           <div className="w-72">
-            <Select label="Select Brand">
+            <Select label="Select Brand" >
               {brandname?.map((data: any) => (
                 <Option key={data.id}>{data.name}</Option>
               ))}

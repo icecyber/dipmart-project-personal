@@ -85,9 +85,7 @@ a {
   background: rgb(88, 147, 241);
 }
 
-button {
-  border: none;
-}
+
 .content-tabs {
   flex-grow: 1;
 }
@@ -113,4 +111,28 @@ button {
 }
 .active-content {
   display: block;
+}
+.drawer {
+  height: 100%;
+  position: fixed;
+  z-index: 1001;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
+  box-shadow: 2px 0px 12px 0px rgb(0 0 0 / 77%);
+  background-color: white;
+}
+
+.backDrop {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  display: block;
+  z-index: 1000;
+  visibility: visible;
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.6);
 }
