@@ -41,7 +41,7 @@ const notification = () => {
           <div className="bg-orange-500 min-w-[35px] max-h-[35px]  flex justify-center items-center rounded-full ">
             <DeliveryIcon />
           </div>
-          <div className="pl-[15px]">
+          <div className="pl-[15px]  w-full">
             <div className="flex justify-between">
               <h3 className="font-bold text-[15px]">Order Arrived</h3>
               <span className="text-gray-400">12:35 PM</span>
@@ -70,7 +70,7 @@ const notification = () => {
           <div className="bg-emerald-300 min-w-[35px] max-h-[35px]  flex justify-center items-center rounded-full ">
             <TagIcon className="w-5 text-white" />
           </div>
-          <div className="pl-[15px]">
+          <div className="pl-[15px]  w-full">
             <div className="flex justify-between">
               <h3 className="font-bold text-[15px]">
                 20% Discount on all Xiaomi <br />

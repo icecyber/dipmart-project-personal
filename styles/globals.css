@@ -20,6 +20,10 @@
 .auth-btn {
   @apply py-[15px] active:text-blue-900 active:font-bold text-[16px] active:border active:border-b-4 active:border-blue-800;
 }
+.count_btn {
+  @apply px-2 border-2 border-blue-800 rounded-md;
+}
+
 html,
 body {
   padding: 0;
@@ -85,9 +89,6 @@ a {
   background: rgb(88, 147, 241);
 }
 
-button {
-  border: none;
-}
 .content-tabs {
   flex-grow: 1;
 }

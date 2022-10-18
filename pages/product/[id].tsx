@@ -10,6 +10,9 @@ import {
 import customAxios from '../../components/axios/axiosHttp';
 import Layout from '../../components/Layout';
 import { Fragment } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '../../redux/store';
+import { decresment, increment } from '../../redux/counterSlice';
 
 interface Product {
   id: string;
@@ -59,6 +62,8 @@ const ProductDetail = () => {
   const router = useRouter();
   const myroute = router.query.id;
   const [open, setOpen] = useState(-1);
+  const count = useSelector((state: RootState) => state.Counter.value);
+  const dispatch = useDispatch();
 
   const handleOpen = (index: number) => {
     setOpen(open === index ? -1 : index);
@@ -128,15 +133,17 @@ const ProductDetail = () => {
               <button
                 type="button"
                 name="decrease-btn"
-                className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]"
+                className="count_btn"
+                onClick={() => (count == 0 ? null : dispatch(decresment()))}
               >
                 -
               </button>
-              <span className="text-center px-2">1</span>
+              <span className="text-center px-2">{count}</span>
               <button
                 type="button"
                 name="increase-btn"
-                className="border-2 border-blue-800 text-blue-800 px-2 rounded-lg w-[30px] h-[30px]"
+                className="count_btn"
+                onClick={() => dispatch(increment())}
               >
                 +
               </button>
